@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id              String             @id
+  name            String
+  email           String
+  password        String
+  role            String?
+  avatar          String?
+  createdAt       DateTime           @default(now())
+  Address         Address?
+  UsersOnPosition UsersOnPositions[]
+
+  @@map("users")
+}
+
+model Address {
+  id           String  @id
+  zipcode      String
+  street       String
+  number       String
+  neighborhood String
+  city         String
+  state        String
+  complement   String?
+  userId       String  @unique
+  user         User    @relation(fields: [userId], references: [id])
+
+  @@map("addresses")
+}
+
+model Position {
+  id              String             @id
+  name            String
+  abbreviation    String
+  UsersOnPosition UsersOnPositions[]
+
+  @@map("positions")
+}
+
+model UsersOnPositions {
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  Position   Position @relation(fields: [positionId], references: [id])
+  positionId String
+  assignedAt DateTime @default(now())
+
+  @@id([userId, positionId])
+  @@map("users_on_positions")
+}
