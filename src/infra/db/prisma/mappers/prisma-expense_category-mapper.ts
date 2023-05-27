@@ -1,13 +1,13 @@
 import { ExpenseCategory } from "@domain/expense_category/expense_category.entity";
 
 export class PrismaExpenseCategoryMapper {
-  static toPrisma(user: ExpenseCategory) {
+  static toPrisma(expenseCategory: ExpenseCategory) {
     return {
-      id: user.id,
-      name: user.name,
-      color: user.color,
-      userId: user.userId,
-      createdAt: user.createdAt,
+      id: expenseCategory.id,
+      name: expenseCategory.name,
+      color: expenseCategory.color,
+      userId: expenseCategory.userId,
+      createdAt: expenseCategory.createdAt,
     };
   }
 

@@ -4,6 +4,8 @@ import { PrismaUsersRepository } from "./prisma/repositories/prisma-users-reposi
 import { UserRepositoryInterface } from "@domain/user/user.repository";
 import { ExpenseCategoryRepositoryInterface } from "@domain/expense_category/expense_category.repository";
 import { PrismaExpenseCategoriesRepository } from "./prisma/repositories/prisma-expense_categories-repository";
+import { PrismaExpensesRepository } from "./prisma/repositories/prisma-expenses-repository";
+import { ExpenseRepositoryInterface } from "@domain/expense/expense.repository";
 
 @Module({
   providers: [
@@ -16,7 +18,15 @@ import { PrismaExpenseCategoriesRepository } from "./prisma/repositories/prisma-
       provide: ExpenseCategoryRepositoryInterface,
       useClass: PrismaExpenseCategoriesRepository,
     },
+    {
+      provide: ExpenseRepositoryInterface,
+      useClass: PrismaExpensesRepository,
+    },
   ],
-  exports: [UserRepositoryInterface, ExpenseCategoryRepositoryInterface],
+  exports: [
+    UserRepositoryInterface,
+    ExpenseCategoryRepositoryInterface,
+    ExpenseRepositoryInterface,
+  ],
 })
 export class DatabaseModule {}

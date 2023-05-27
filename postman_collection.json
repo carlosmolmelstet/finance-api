@@ -1,0 +1,425 @@
+{
+	"info": {
+		"_postman_id": "e88a86e6-9113-465b-9462-6a4bbe26b93e",
+		"name": "Finance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24164164"
+	},
+	"item": [
+		{
+			"name": "Expense Categories",
+			"item": [
+				{
+					"name": "Update Expense Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"28f88e58-6351-4c97-8610-c2b6b43574c3\",\n    \"name\": \"User link update\",\n    \"color\": \"red\",\n    \"userId\": \"9603cbe6-6147-4ac8-a928-3eb69038b3de\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/expense-categories/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expense-categories",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Expense Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/expense-categories/9509b6d7-cabd-44ba-9022-489b2a7eb3b8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expense-categories",
+								"9509b6d7-cabd-44ba-9022-489b2a7eb3b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Expense Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/expense-categories/02906662-f0c5-44f7-a324-f773327402e9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expense-categories",
+								"02906662-f0c5-44f7-a324-f773327402e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Expense Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User link\",\n    \"color\": \"red\",\n    \"userId\": \"9603cbe6-6147-4ac8-a928-3eb69038b3de\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/expense-categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expense-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Expense Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/expense-categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expense-categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expenses",
+			"item": [
+				{
+					"name": "Update Expenses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"df6363c9-92aa-41ef-87f1-f81b1386d94d\",\n    \"amount\": 200,\n    \"date\": \"2023-05-26T00:00:00.000Z\",\n    \"userId\": \"9603cbe6-6147-4ac8-a928-3eb69038b3de\",\n    \"categoryId\": \"9509b6d7-cabd-44ba-9022-489b2a7eb3b8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/expenses/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expenses",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Expenses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/expenses/f58311cd-e089-4d76-9e4d-0a362663b396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expenses",
+								"f58311cd-e089-4d76-9e4d-0a362663b396"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Expenses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/expenses/be16a3b7-a6ca-415d-a0f8-893d685596d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expenses",
+								"be16a3b7-a6ca-415d-a0f8-893d685596d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Expenses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 10.4,\n    \"date\": \"2023-01-01T00:00:00.000Z\",\n    \"userId\": \"9603cbe6-6147-4ac8-a928-3eb69038b3de\",\n    \"categoryId\": \"9509b6d7-cabd-44ba-9022-489b2a7eb3b8\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/expenses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Expenses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vbG1lbHN0ZXQyMDE2QGdtYWlsLmNvbSIsIm5hbWUiOiJDYXJsb3MgRWR1YXJkbyBNb2xtZWxzdGV0Iiwicm9sZSI6ImFkbWluIiwic3ViIjoiOTYwM2NiZTYtNjE0Ny00YWM4LWE5MjgtM2ViNjkwMzhiM2RlIiwiaWF0IjoxNjg1MTQ2MjIxLCJleHAiOjE2ODUyMzI2MjF9.ek_1jKKbBmZxWMQUHGO08NgQKRHG1eagv-mY5uKR2lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/expenses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign In",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJuYW1lIjoiY2FybG9zIiwic3ViIjoiZDExNmM1MDYtZjVjZC00ZjY4LTk0NTktNTRkMGNkYWVlOGUwIiwiaWF0IjoxNjgyMTg5NDgyLCJleHAiOjE2ODIxODk1NDJ9.ppFmUJ-fHgb9OaslQr2Lq0SRpC8sIz8USh3cSha6c8c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"molmelstet2016@gmail.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/auth/sign-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User Teste\",\n    \"email\": \"teste@gmail.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/auth/sign-up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

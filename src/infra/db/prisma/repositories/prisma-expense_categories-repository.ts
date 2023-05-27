@@ -23,7 +23,14 @@ export class PrismaExpenseCategoriesRepository
   async findAll(userId: string): Promise<ExpenseCategory[]> {
     const response = await this.prisma.expenseCategory.findMany({
       where: {
-        userId: userId || null,
+        OR: [
+          {
+            userId: userId,
+          },
+          {
+            userId: null,
+          },
+        ],
       },
     });
     return response.map((item) => PrismaExpenseCategoryMapper.toDomain(item));

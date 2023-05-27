@@ -20,9 +20,16 @@ import { UpdateExpenseCategoryUseCase } from "@application/expense_category/upda
 import { DeleteExpenseCategoryUseCase } from "@application/expense_category/delete-expense_category.use-case";
 import { FindByIdExpenseCategoryUseCase } from "@application/expense_category/find-by-id-expense_category.use-case";
 import { FindAllExpenseCategoryUseCase } from "@application/expense_category/find-all-expense_category.use-case";
+import { ExpensesProvider } from "./providers/expenses.provider";
+import { ExpenseController } from "./controllers/expense/expense.controller";
 
 @Module({
-  controllers: [AuthController, UsersController, ExpenseCategoriesController],
+  controllers: [
+    AuthController,
+    UsersController,
+    ExpenseCategoriesController,
+    ExpenseController,
+  ],
   providers: [
     PrismaService,
     AuthService,
@@ -113,6 +120,7 @@ import { FindAllExpenseCategoryUseCase } from "@application/expense_category/fin
       },
       inject: [PrismaExpenseCategoriesRepository],
     },
+    ...ExpensesProvider(),
   ],
 })
 export class HttpModule {}
