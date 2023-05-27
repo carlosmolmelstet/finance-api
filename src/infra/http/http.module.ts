@@ -16,6 +16,10 @@ import { PrismaExpenseCategoriesRepository } from "@infra/db/prisma/repositories
 import { InsertExpenseCategoryUseCase } from "@application/expense_category/insert-expense_category.use-case";
 import { ExpenseCategoryRepositoryInterface } from "@domain/expense_category/expense_category.repository";
 import { ExpenseCategoriesController } from "./controllers/expense_categories/expense_categories.controller";
+import { UpdateExpenseCategoryUseCase } from "@application/expense_category/update-expense_category.use-case";
+import { DeleteExpenseCategoryUseCase } from "@application/expense_category/delete-expense_category.use-case";
+import { FindByIdExpenseCategoryUseCase } from "@application/expense_category/find-by-id-expense_category.use-case";
+import { FindAllExpenseCategoryUseCase } from "@application/expense_category/find-all-expense_category.use-case";
 
 @Module({
   controllers: [AuthController, UsersController, ExpenseCategoriesController],
@@ -78,6 +82,34 @@ import { ExpenseCategoriesController } from "./controllers/expense_categories/ex
       provide: InsertExpenseCategoryUseCase,
       useFactory: (expenseCategoryRepo: ExpenseCategoryRepositoryInterface) => {
         return new InsertExpenseCategoryUseCase(expenseCategoryRepo);
+      },
+      inject: [PrismaExpenseCategoriesRepository],
+    },
+    {
+      provide: UpdateExpenseCategoryUseCase,
+      useFactory: (expenseCategoryRepo: ExpenseCategoryRepositoryInterface) => {
+        return new UpdateExpenseCategoryUseCase(expenseCategoryRepo);
+      },
+      inject: [PrismaExpenseCategoriesRepository],
+    },
+    {
+      provide: DeleteExpenseCategoryUseCase,
+      useFactory: (expenseCategoryRepo: ExpenseCategoryRepositoryInterface) => {
+        return new DeleteExpenseCategoryUseCase(expenseCategoryRepo);
+      },
+      inject: [PrismaExpenseCategoriesRepository],
+    },
+    {
+      provide: FindByIdExpenseCategoryUseCase,
+      useFactory: (expenseCategoryRepo: ExpenseCategoryRepositoryInterface) => {
+        return new FindByIdExpenseCategoryUseCase(expenseCategoryRepo);
+      },
+      inject: [PrismaExpenseCategoriesRepository],
+    },
+    {
+      provide: FindAllExpenseCategoryUseCase,
+      useFactory: (expenseCategoryRepo: ExpenseCategoryRepositoryInterface) => {
+        return new FindAllExpenseCategoryUseCase(expenseCategoryRepo);
       },
       inject: [PrismaExpenseCategoriesRepository],
     },

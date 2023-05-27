@@ -20,16 +20,40 @@ export class PrismaExpenseCategoriesRepository
     return PrismaExpenseCategoryMapper.toDomain(response);
   }
 
-  findAll(): Promise<ExpenseCategory[]> {
-    throw new Error("Method not implemented.");
+  async findAll(userId: string): Promise<ExpenseCategory[]> {
+    const response = await this.prisma.expenseCategory.findMany({
+      where: {
+        userId: userId || null,
+      },
+    });
+    return response.map((item) => PrismaExpenseCategoryMapper.toDomain(item));
   }
-  findById(id: string): Promise<ExpenseCategory> {
-    throw new Error("Method not implemented.");
+
+  async findById(id: string): Promise<ExpenseCategory> {
+    const response = await this.prisma.expenseCategory.findUnique({
+      where: { id },
+    });
+    return PrismaExpenseCategoryMapper.toDomain(response);
   }
-  update(id: string, entity: ExpenseCategory): Promise<void> {
-    throw new Error("Method not implemented.");
+
+  async update(id: string, entity: ExpenseCategory): Promise<ExpenseCategory> {
+    const raw = PrismaExpenseCategoryMapper.toPrisma(entity);
+
+    console.log(raw);
+    const response = await this.prisma.expenseCategory.update({
+      where: { id: id },
+      data: {
+        color: raw.color,
+        name: raw.name,
+      },
+    });
+
+    return PrismaExpenseCategoryMapper.toDomain(response);
   }
-  delete(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+
+  async delete(id: string): Promise<void> {
+    await this.prisma.expenseCategory.delete({
+      where: { id },
+    });
   }
 }
