@@ -12,9 +12,13 @@ import { AuthController } from "./controllers/auth/auth.controller";
 import { UsersController } from "./controllers/users/users.controller";
 import { RolesGuard } from "./guards/roles.guard";
 import { AuthService } from "./services/auth.service";
+import { PrismaExpenseCategoriesRepository } from "@infra/db/prisma/repositories/prisma-expense_categories-repository";
+import { InsertExpenseCategoryUseCase } from "@application/expense_category/insert-expense_category.use-case";
+import { ExpenseCategoryRepositoryInterface } from "@domain/expense_category/expense_category.repository";
+import { ExpenseCategoriesController } from "./controllers/expense_categories/expense_categories.controller";
 
 @Module({
-  controllers: [UsersController, AuthController],
+  controllers: [AuthController, UsersController, ExpenseCategoriesController],
   providers: [
     PrismaService,
     AuthService,
@@ -62,6 +66,20 @@ import { AuthService } from "./services/auth.service";
         return new SignUpUseCase(userRepo, authRepo);
       },
       inject: [PrismaUsersRepository, AuthService],
+    },
+    {
+      provide: PrismaExpenseCategoriesRepository,
+      useFactory: (prisma: PrismaService) => {
+        return new PrismaExpenseCategoriesRepository(prisma);
+      },
+      inject: [PrismaService],
+    },
+    {
+      provide: InsertExpenseCategoryUseCase,
+      useFactory: (expenseCategoryRepo: ExpenseCategoryRepositoryInterface) => {
+        return new InsertExpenseCategoryUseCase(expenseCategoryRepo);
+      },
+      inject: [PrismaExpenseCategoriesRepository],
     },
   ],
 })
