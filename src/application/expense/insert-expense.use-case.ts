@@ -6,7 +6,7 @@ export class InsertExpenseUseCase {
 
   async execute(data: InsertExpenseDTO): Promise<Expense> {
     const expenseCategory = Expense.create(data);
-
+    console.log("asdasd", data);
     const response = await this.repository.insert(expenseCategory);
     return response.toJSON();
   }

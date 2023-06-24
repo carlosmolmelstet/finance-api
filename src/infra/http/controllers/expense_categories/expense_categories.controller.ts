@@ -64,6 +64,7 @@ export class ExpenseCategoriesController {
 
   @Get("")
   findAll(@Req() request: RequestPayload) {
+    console.log("testeee", request.user.sub);
     return this.findAllExpenseCategoryUseCase.execute(request.user.sub);
   }
 }

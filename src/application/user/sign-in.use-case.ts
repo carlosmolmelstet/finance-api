@@ -1,5 +1,7 @@
 import { AuthRepositoryInterface } from "@domain/user/auth.repository";
 import { UserRepositoryInterface } from "@domain/user/user.repository";
+import { CustomError } from "@helpers/error.helper";
+import { HttpStatus } from "@nestjs/common";
 import { compare } from "bcrypt";
 
 export class SignInUseCase {
@@ -10,11 +12,13 @@ export class SignInUseCase {
 
   async execute(input: SignInUseCaseInput): Promise<SignInUseCaseOutput> {
     const user = await this.repository.findByEmail(input.email);
-    if (!user) throw new Error("User not found");
+    if (!user)
+      throw new CustomError("Usuario não encontrado", HttpStatus.NOT_FOUND);
 
     const isPasswordValid = await compare(input.password, user.password);
 
-    if (!isPasswordValid) throw new Error("User not found");
+    if (!isPasswordValid)
+      throw new CustomError("Usuario não encontrado", HttpStatus.NOT_FOUND);
 
     const token = await this.auth.createJWT(user);
 

@@ -7,7 +7,9 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
+  Put,
   Req,
   UseGuards,
 } from "@nestjs/common";
@@ -21,7 +23,6 @@ import { RequestPayload } from "@helpers/jwt.helper";
 type InsertExpenseDto = {
   amount: number;
   date: Date;
-  userId: string;
   categoryId: string;
 };
 
@@ -29,7 +30,6 @@ type UpdateExpenseDto = {
   id: string;
   amount: number;
   date: Date;
-  userId: string;
   categoryId: string;
 };
 
@@ -45,13 +45,25 @@ export class ExpenseController {
   ) {}
 
   @Post()
-  insert(@Body() insertExpenseDto: InsertExpenseDto) {
-    return this.insertExpenseUseCase.execute(insertExpenseDto);
+  insert(
+    @Body() insertExpenseDto: InsertExpenseDto,
+    @Req() request: RequestPayload
+  ) {
+    return this.insertExpenseUseCase.execute({
+      ...insertExpenseDto,
+      userId: request.user.sub,
+    });
   }
 
-  @Post("update")
-  update(@Body() updateExpenseDto: UpdateExpenseDto) {
-    return this.updateExpenseUseCase.execute(updateExpenseDto);
+  @Put()
+  update(
+    @Body() updateExpenseDto: UpdateExpenseDto,
+    @Req() request: RequestPayload
+  ) {
+    return this.updateExpenseUseCase.execute({
+      ...updateExpenseDto,
+      userId: request.user.sub,
+    });
   }
 
   @Delete(":id")

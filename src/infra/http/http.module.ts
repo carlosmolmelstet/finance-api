@@ -7,7 +7,7 @@ import { UserRepositoryInterface } from "@domain/user/user.repository";
 import { PrismaService } from "@infra/db/prisma/prisma.service";
 import { PrismaUsersRepository } from "@infra/db/prisma/repositories/prisma-users-repository";
 import { Module } from "@nestjs/common";
-import { APP_GUARD } from "@nestjs/core";
+import { APP_FILTER, APP_GUARD } from "@nestjs/core";
 import { AuthController } from "./controllers/auth/auth.controller";
 import { UsersController } from "./controllers/users/users.controller";
 import { RolesGuard } from "./guards/roles.guard";
@@ -22,6 +22,8 @@ import { FindByIdExpenseCategoryUseCase } from "@application/expense_category/fi
 import { FindAllExpenseCategoryUseCase } from "@application/expense_category/find-all-expense_category.use-case";
 import { ExpensesProvider } from "./providers/expenses.provider";
 import { ExpenseController } from "./controllers/expense/expense.controller";
+import { CustomErrorFilter } from "./filters/error.filter";
+import { FindUserByIdUseCase } from "@application/user/find-user-by-id";
 
 @Module({
   controllers: [
@@ -33,6 +35,10 @@ import { ExpenseController } from "./controllers/expense/expense.controller";
   providers: [
     PrismaService,
     AuthService,
+    {
+      provide: APP_FILTER,
+      useClass: CustomErrorFilter,
+    },
     {
       provide: APP_GUARD,
       useClass: RolesGuard,
@@ -77,6 +83,13 @@ import { ExpenseController } from "./controllers/expense/expense.controller";
         return new SignUpUseCase(userRepo, authRepo);
       },
       inject: [PrismaUsersRepository, AuthService],
+    },
+    {
+      provide: FindUserByIdUseCase,
+      useFactory: (userRepo: UserRepositoryInterface) => {
+        return new FindUserByIdUseCase(userRepo);
+      },
+      inject: [PrismaUsersRepository],
     },
     {
       provide: PrismaExpenseCategoriesRepository,
