@@ -7,6 +7,21 @@ import { PrismaService } from "../prisma.service";
 @Injectable()
 export class PrismaExpensesRepository implements ExpenseRepositoryInterface {
   constructor(private prisma: PrismaService) {}
+  
+
+  async findByPeriod(userId: string, startDate: Date, endDate: Date): Promise<Expense[]> {
+
+    const response = await this.prisma.expense.findMany({
+      where: {
+        userId: userId || null,
+        date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
+    });
+    return response.map((item) => PrismaExpenseMapper.toDomain(item));
+  }
 
   async insert(expense: Expense): Promise<Expense> {
     const raw = PrismaExpenseMapper.toPrisma(expense);

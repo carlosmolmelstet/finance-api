@@ -10,6 +10,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
   Req,
   UseGuards,
 } from "@nestjs/common";
@@ -19,6 +20,7 @@ import { DeleteExpenseUseCase } from "@application/expense/delete-expense.use-ca
 import { FindByIdExpenseUseCase } from "@application/expense/find-by-id-expense.use-case";
 import { FindAllExpenseUseCase } from "@application/expense/find-all-expense.use-case";
 import { RequestPayload } from "@helpers/jwt.helper";
+import { FindExpenseByPeriodUseCase } from "@application/expense/find-expense-by-period.use-case";
 
 type InsertExpenseDto = {
   amount: number;
@@ -41,7 +43,8 @@ export class ExpenseController {
     private updateExpenseUseCase: UpdateExpenseUseCase,
     private deleteExpenseUseCase: DeleteExpenseUseCase,
     private findByIdExpenseUseCase: FindByIdExpenseUseCase,
-    private findAllExpenseUseCase: FindAllExpenseUseCase
+    private findAllExpenseUseCase: FindAllExpenseUseCase,
+    private findExpenseByPeriodUseCase: FindExpenseByPeriodUseCase
   ) {}
 
   @Post()
@@ -71,13 +74,24 @@ export class ExpenseController {
     return this.deleteExpenseUseCase.execute(id);
   }
 
-  @Get("/:id")
-  findById(@Param("id") id: string) {
-    return this.findByIdExpenseUseCase.execute(id);
-  }
+
 
   @Get("")
   findAll(@Req() request: RequestPayload) {
     return this.findAllExpenseUseCase.execute(request.user.sub);
+  }
+  
+  @Get('period')
+  getData(
+    @Req() request: RequestPayload,
+    @Query('startDate') startDate: string,
+    @Query('endDate') endDate: string,
+  ) {
+    return this.findExpenseByPeriodUseCase.execute(request.user.sub, new Date(startDate), new Date(endDate));
+  }
+
+  @Get("/:id")
+  findById(@Param("id") id: string) {
+    return this.findByIdExpenseUseCase.execute(id);
   }
 }

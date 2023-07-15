@@ -1,6 +1,7 @@
 import { DeleteExpenseUseCase } from "@application/expense/delete-expense.use-case";
 import { FindAllExpenseUseCase } from "@application/expense/find-all-expense.use-case";
 import { FindByIdExpenseUseCase } from "@application/expense/find-by-id-expense.use-case";
+import { FindExpenseByPeriodUseCase } from "@application/expense/find-expense-by-period.use-case";
 import { InsertExpenseUseCase } from "@application/expense/insert-expense.use-case";
 import { UpdateExpenseUseCase } from "@application/expense/update-expense.use-case";
 import { ExpenseRepositoryInterface } from "@domain/expense/expense.repository";
@@ -48,6 +49,13 @@ export function ExpensesProvider() {
       provide: FindAllExpenseUseCase,
       useFactory: (expenseRepo: ExpenseRepositoryInterface) => {
         return new FindAllExpenseUseCase(expenseRepo);
+      },
+      inject: [PrismaExpensesRepository],
+    },
+    {
+      provide: FindExpenseByPeriodUseCase,
+      useFactory: (expenseRepo: ExpenseRepositoryInterface) => {
+        return new FindExpenseByPeriodUseCase(expenseRepo);
       },
       inject: [PrismaExpensesRepository],
     },
