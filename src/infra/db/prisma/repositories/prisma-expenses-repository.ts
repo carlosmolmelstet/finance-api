@@ -7,10 +7,12 @@ import { PrismaService } from "../prisma.service";
 @Injectable()
 export class PrismaExpensesRepository implements ExpenseRepositoryInterface {
   constructor(private prisma: PrismaService) {}
-  
 
-  async findByPeriod(userId: string, startDate: Date, endDate: Date): Promise<Expense[]> {
-
+  async findByPeriod(
+    userId: string,
+    startDate: Date,
+    endDate: Date
+  ): Promise<Expense[]> {
     const response = await this.prisma.expense.findMany({
       where: {
         userId: userId || null,
@@ -52,7 +54,6 @@ export class PrismaExpensesRepository implements ExpenseRepositoryInterface {
   async update(id: string, entity: Expense): Promise<Expense> {
     const raw = PrismaExpenseMapper.toPrisma(entity);
 
-    console.log(raw);
     const response = await this.prisma.expense.update({
       where: { id: id },
       data: {
